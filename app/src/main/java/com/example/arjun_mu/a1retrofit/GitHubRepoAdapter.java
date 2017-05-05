@@ -39,11 +39,17 @@ public class GitHubRepoAdapter extends ArrayAdapter<GitHubRepo> {
         }
 
         TextView textView = (TextView) row.findViewById(R.id.list_item_pagination_text);
+        TextView textView1 = (TextView) row.findViewById(R.id.fullname);
+        TextView textView2 = (TextView) row.findViewById(R.id.id);
 
         GitHubRepo item = values.get(position);
+
+        Owner owner=item.getOwner();
+        int id=owner.getId();
         String message = item.getName();
         textView.setText(message);
-
+        textView.setText(item.getFull_name());
+        textView2.setText(""+item.getId());
         return row;
     }
 }
